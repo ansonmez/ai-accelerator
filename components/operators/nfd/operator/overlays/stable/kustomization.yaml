@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
   - ../../base
-  - ../../../instance/overlays/only-nvidia/kustomization.yaml
 
 patches:
   - target:

@@ -8,3 +8,5 @@ resources:
   - dsc-init.yaml
   - namespace.yaml
   - odhdashboardconfig.yaml
+  - nodefeaturediscovery.yaml
+  - clusterpolicy.yaml

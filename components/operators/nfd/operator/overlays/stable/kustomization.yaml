@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base
+  - ../../../instance/overlays/default
 
 patches:
   - target:

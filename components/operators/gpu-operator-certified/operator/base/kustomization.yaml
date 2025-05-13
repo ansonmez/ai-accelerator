@@ -5,6 +5,7 @@ resources:
   - namespace.yaml
   - operator-group.yaml
   - subscription.yaml
+  - ../overlays/stable
 
 components:
   - ../components/console-plugin

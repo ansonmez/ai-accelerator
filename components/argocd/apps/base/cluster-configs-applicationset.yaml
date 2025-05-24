@@ -10,7 +10,7 @@ spec:
   generators:
     - list:
         elements:
-          - patch-me-see-overlays
+          - name: patch-me-see-overlays
             path: "components/cluster-configs/overlays/default"
   template:
     metadata:

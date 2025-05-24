@@ -10,7 +10,9 @@ spec:
   generators:
     - list:
         elements:
-          - patch-me-see-overlays
+          - values:
+              name: autoscaling
+              path: components/cluster-configs/autoscaling/overlays/default
   template:
     metadata:
       name: '{{values.name}}'

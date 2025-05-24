@@ -41,8 +41,3 @@ spec:
         values:
           name: nfd
           path: components/operators/nfd/operator/overlays/stable
-       - cluster: local
-         url: https://kubernetes.default.svc
-         values:
-           name: web-terminal-operator
-           path: components/operators/web-terminal-operator/operator/overlays/fast

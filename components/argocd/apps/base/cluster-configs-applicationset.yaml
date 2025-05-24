@@ -11,6 +11,7 @@ spec:
     - list:
         elements:
           - patch-me-see-overlays
+            path: "components/cluster-configs/overlays/default"
   template:
     metadata:
       name: '{{values.name}}'

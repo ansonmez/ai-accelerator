@@ -44,10 +44,5 @@ spec:
        - cluster: local
          url: https://kubernetes.default.svc
          values:
-           name: openshift-logging-operator
-           path: components/operators/openshift-logging/aggregate/overlays/default
-       - cluster: local
-         url: https://kubernetes.default.svc
-         values:
            name: web-terminal-operator
            path: components/operators/web-terminal-operator/operator/overlays/fast

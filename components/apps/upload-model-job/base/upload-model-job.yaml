@@ -6,6 +6,10 @@ spec:
   selector: {}
   template:
     spec:
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "1"
       containers:
         - name: upload-model-to-s3
           image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2024.1

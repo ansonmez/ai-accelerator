@@ -11,8 +11,8 @@ metadata:
   name: tgis
 spec:
   predictor:
-    maxReplicas: 1
-    minReplicas: 1
+    maxReplicas: 0
+    minReplicas: 0
     model:
       modelFormat:
         name: pytorch

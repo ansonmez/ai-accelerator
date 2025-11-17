@@ -161,3 +161,9 @@ dmypy.json
 
 # pytype static type analyzer
 .pytype/
+
+# Custom documentation files (not part of repo)
+ARGOCD_ARCHITECTURE.md
+UPGRADE_RHOAI.md
+OVERLAY_NAMING_STRATEGY.md
+SAFE_UPGRADE_OCPAIR03.md

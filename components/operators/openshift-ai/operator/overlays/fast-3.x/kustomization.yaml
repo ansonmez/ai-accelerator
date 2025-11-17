@@ -9,3 +9,7 @@ patches:
       kind: Subscription
       name: rhods-operator
     path: patch-channel.yaml
+  - target:
+      kind: Subscription
+      name: rhods-operator
+    path: patch-starting-csv.yaml

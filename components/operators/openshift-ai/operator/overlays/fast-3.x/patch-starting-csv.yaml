@@ -1,0 +1,3 @@
+- op: add
+  path: /spec/startingCSV
+  value: rhods-operator.3.0.0

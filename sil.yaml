@@ -1,0 +1,213 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: openshift-gitops-openshift-gitops-argocd-application-controller
+  labels:
+    app.kubernetes.io/name: openshift-gitops-argocd-application-controller
+    app.kubernetes.io/part-of: argocd
+    app.kubernetes.io/component: application-controller
+rules:
+  # Permissions for Argo CD to manage applications and resources it owns
+  - apiGroups: ['*'] # Be as specific as possible in a production environment
+    resources: ['*'] # Be as specific as possible in a production environment
+    verbs:
+      - get
+      - list
+      - watch
+      - update
+      - patch
+      - create
+      - delete
+  # Argo CD needs to be able to manage its own CRDs and other Argo Proj resources
+  - apiGroups:
+      - argoproj.io
+    resources:
+      - applications
+      - applicationsets
+      - appprojects
+      - applications/status
+      - applicationsets/status
+      - appprojects/status
+      - applications/finalizers
+      - applicationsets/finalizers
+      - appprojects/finalizers
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  # Permissions for core Kubernetes resources
+  - apiGroups: [''] # Empty string for core API group
+    resources:
+      - pods
+      - pods/log
+      - pods/exec
+      - services
+      - endpoints
+      - persistentvolumeclaims
+      - persistentvolumes
+      - configmaps
+      - secrets
+      - serviceaccounts
+      - namespaces # If managing namespaces
+      - replicationcontrollers
+      - resourcequotas
+      - limitranges
+      - events
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - apps
+    resources:
+      - deployments
+      - deployments/scale
+      - replicasets
+      - replicasets/scale
+      - statefulsets
+      - statefulsets/scale
+      - daemonsets
+      - controllerrevisions
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - batch
+    resources:
+      - jobs
+      - cronjobs
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - networking.k8s.io
+    resources:
+      - networkpolicies
+      - ingresses
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - policy
+    resources:
+      - poddisruptionbudgets
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - rbac.authorization.k8s.io
+    resources:
+      - roles
+      - rolebindings
+      - clusterroles # Use with caution: only if ArgoCD needs to manage other ClusterRoles
+      - clusterrolebindings # Use with caution: only if ArgoCD needs to manage other ClusterRoleBindings
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  # OpenShift specific resources (add more as needed by your applications)
+  - apiGroups:
+      - route.openshift.io
+    resources:
+      - routes
+      - routes/custom-host
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - image.openshift.io
+    resources:
+      - imagestreams
+      - imagestreamtags
+      - imagetags
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - build.openshift.io
+    resources:
+      - buildconfigs
+      - builds
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - apps.openshift.io
+    resources:
+      - deploymentconfigs
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  # For AppliedManifestWorks if using Open Cluster Management (OCM) integration
+  - apiGroups:
+      - work.open-cluster-management.io
+    resources:
+      - appliedmanifestworks
+      - manifestworks # Also typically needed
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  # For cluster information
+  - apiGroups: ['']
+    resources: ['nodes'] # Required for some health checks and resource discovery
+    verbs: ['get', 'list', 'watch']
+  - apiGroups: ['']
+    resources: ['version'] # To get cluster version
+    verbs: ['get']

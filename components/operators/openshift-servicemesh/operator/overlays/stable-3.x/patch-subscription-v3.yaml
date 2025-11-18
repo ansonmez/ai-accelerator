@@ -1,0 +1,9 @@
+- op: replace
+  path: /metadata/name
+  value: 'servicemeshoperator3'
+- op: replace
+  path: /spec/name
+  value: 'servicemeshoperator3'
+- op: replace
+  path: /spec/channel
+  value: 'stable'

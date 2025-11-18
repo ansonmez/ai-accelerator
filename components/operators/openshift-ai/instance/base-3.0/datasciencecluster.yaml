@@ -4,27 +4,26 @@ metadata:
   name: default
 spec:
   components:
-    codeflare:
-      managementState: Removed
-    kserve:
-      managementState: Removed
-      rawDeploymentServiceConfig: Headless
-    modelregistry:
-      registriesNamespace: rhoai-model-registries
-      managementState: Removed
-    trustyai:
-      managementState: Removed
-    ray:
-      managementState: Removed
-    kueue:
-      managementState: Removed
-    workbenches:
-      managementState: Removed
-    dashboard:
-      managementState: Managed
-    modelmeshserving:
-      managementState: Removed
-    datasciencepipelines:
-      managementState: Removed
-    trainingoperator:
-      managementState: Removed
+   dashboard:
+     managementState: Managed
+   aipipelines:
+     managementState: Managed
+   feastoperator:
+     managementState: Managed
+   kserve:
+     managementState: Managed
+   llamastackoperator:
+     managementState: Managed
+   kueue:
+     managementState: Removed
+   modelregistry:
+     managementState: Managed
+     registriesNamespace: rhoai-model-registries
+   ray:
+     managementState: Removed
+   workbenches:
+     managementState: Managed
+   trainingoperator:
+     managementState: Managed
+   trustyai:
+     managementState: Managed

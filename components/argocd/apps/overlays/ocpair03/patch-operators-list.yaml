@@ -21,11 +21,11 @@ spec:
         values:
           name: openshift-serverless-operator
           path: components/operators/openshift-serverless/operator/overlays/stable
-            #      - cluster: local
-            #        url: https://kubernetes.default.svc
-            #        values:
-            #          name: openshift-servicemesh-operator
-            #          path: components/operators/openshift-servicemesh/operator/overlays/stable
+      - cluster: local
+        url: https://kubernetes.default.svc
+        values:
+          name: openshift-servicemesh-operator
+          path: components/operators/openshift-servicemesh/operator/overlays/stable
             #      - cluster: local
             #        url: https://kubernetes.default.svc
             #        values:

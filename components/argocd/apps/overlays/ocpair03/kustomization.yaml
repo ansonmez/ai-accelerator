@@ -1,9 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-# Use base directory reference - control what gets deployed with patches
+# Local resources - only deploy what we need (operators)
+# NOT including cluster-configs or tenants ApplicationSets
 resources:
-  - ../../base
+  - cluster-config-app-of-apps.yaml
+  - cluster-operators-applicationset.yaml
 
 patches:
   - path: patch-cluster-config-app-of-apps.yaml
@@ -14,14 +16,3 @@ patches:
     target:
       kind: ApplicationSet
       name: cluster-operators
-  # Disable unwanted ApplicationSets by removing them entirely
-  - target:
-      kind: ApplicationSet
-      name: cluster-configs
-    patch: |-
-      $patch: delete
-  - target:
-      kind: ApplicationSet
-      name: tenants
-    patch: |-
-      $patch: delete

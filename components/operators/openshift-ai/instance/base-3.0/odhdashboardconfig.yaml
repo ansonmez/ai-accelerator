@@ -4,15 +4,16 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: ServerSideApply=true
   name: odh-dashboard-config
- dashboardConfig:
-   disableTracking: false
-   disableModelRegistry: false
-   disableModelCatalog: false
-   disableKServeMetrics: false
-   genAiStudio: true
-   modelAsService: true
-   disableLMEval: false
- notebookController:
-   enabled: true
-   notebookNamespace: rhods-notebooks
-   pvcSize: 20Gi
+spec:
+  dashboardConfig:
+    disableTracking: false
+    disableModelRegistry: false
+    disableModelCatalog: false
+    disableKServeMetrics: false
+    genAiStudio: true
+    modelAsService: true
+    disableLMEval: false
+  notebookController:
+    enabled: true
+    notebookNamespace: rhods-notebooks
+    pvcSize: 20Gi

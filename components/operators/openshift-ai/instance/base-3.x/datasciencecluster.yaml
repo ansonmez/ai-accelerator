@@ -1,0 +1,31 @@
+# The DataScienceCluster and DSCInitialization in their v2 form, as OpenShift AI 3.x stores them.
+# base-3.0 keeps the v1 form, which ArgoCD always showed as OutOfSync against the v2 objects.
+apiVersion: datasciencecluster.opendatahub.io/v2
+kind: DataScienceCluster
+metadata:
+  name: default
+spec:
+  components:
+   dashboard:
+     managementState: Managed
+   aipipelines:
+     managementState: Managed
+   feastoperator:
+     managementState: Managed
+   kserve:
+     managementState: Managed
+   llamastackoperator:
+     managementState: Managed
+   kueue:
+     managementState: Removed
+   modelregistry:
+     managementState: Managed
+     registriesNamespace: rhoai-model-registries
+   ray:
+     managementState: Removed
+   workbenches:
+     managementState: Managed
+   trainingoperator:
+     managementState: Managed
+   trustyai:
+     managementState: Managed

@@ -1,0 +1,13 @@
+# v2 form: OpenShift AI 3.x has no serviceMesh section (the gateway replaces it).
+apiVersion: dscinitialization.opendatahub.io/v2
+kind: DSCInitialization
+metadata:
+  name: default-dsci
+spec:
+  applicationsNamespace: redhat-ods-applications
+  monitoring:
+    managementState: Managed
+    namespace: redhat-ods-monitoring
+  trustedCABundle:
+    customCABundle: ''
+    managementState: Managed

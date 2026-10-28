@@ -4,7 +4,6 @@ kind: Kustomization
 commonAnnotations:
   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 
-# The instance overlay is shared with fast-3.x: the 3.x DataScienceCluster is the same on both channels.
 resources:
 - ../../../operator/overlays/stable-3.x
-- ../../../instance/overlays/fast-3.x
+- ../../../instance/overlays/stable-3.x

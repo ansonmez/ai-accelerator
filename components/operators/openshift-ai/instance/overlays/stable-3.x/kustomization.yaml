@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: redhat-ods-applications
+
+resources:
+  - ../../base-3.x
+
+# Not components-training, auth-with-authorino or llamastack-operator: they patch v1-only fields
+# (datasciencepipelines, serviceMesh) into the DataScienceCluster and DSCInitialization. Their
+# 3.x settings (workbenches, llamastackoperator Managed) are in base-3.x.
+components:
+  - ../../components/default-notebook-pvc-size
+  - ../../components/idle-notebook-culling
+  - ../../components/notebook-pod-sizes
+  - ../../components/make-kubeadmin-cluster-admin
+  - ../../components/model-server-pod-sizes
+  - ../../components/rhoai-dashboard-access

@@ -1,9 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-# ocpair03: manual approval, and startingCSV = the installed v3.2.0. The Subscription had
-# lost its installedCSV status and asked for v3.1.0 while v3.2.0 was installed, so OLM
-# failed to resolve every Subscription in openshift-operators (ResolutionFailed).
+# ocpair03: on OpenShift 4.20 the Ingress Operator owns this Subscription (it installs
+# Service Mesh 3 for Gateway API) and writes channel, installPlanApproval and startingCSV.
+# Git holds the same values, so ArgoCD does not fight it.
 resources:
   - ../stable-3.x
 

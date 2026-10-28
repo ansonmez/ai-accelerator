@@ -1,0 +1,23 @@
+# The OpenShift AI gateway gets a certificate for its own two hostnames only. With the
+# *.apps wildcard, Chrome reused the gateway's HTTP/2 connection (same IP, valid certificate)
+# for the console and OAuth hostnames, and the gateway answered them with an empty 404.
+# GatewayConfig default-gateway uses this secret: spec.certificate {type: Provided,
+# secretName: rhoai-gateway-tls} (set on the cluster; the operator owns that object).
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: rhoai-gateway-cert
+spec:
+  secretName: rhoai-gateway-tls
+  dnsNames:
+    - rh-ai.apps.ocpair03.anillocal.com
+    - data-science-gateway.apps.ocpair03.anillocal.com
+  duration: 2160h0m0s
+  renewBefore: 720h0m0s
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048

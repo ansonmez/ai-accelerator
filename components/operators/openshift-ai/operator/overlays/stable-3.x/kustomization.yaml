@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+
+# No startingCSV: stable-3.x starts at 3.3.0, so the 3.0.0 pin of fast-3.x would fail a fresh install.
+# Manual approval: every upgrade step waits for an approved InstallPlan.
+patches:
+  - target:
+      kind: Subscription
+      name: rhods-operator
+    path: patch-channel.yaml
+  - target:
+      kind: Subscription
+      name: rhods-operator
+    path: patch-install-plan-approval.yaml

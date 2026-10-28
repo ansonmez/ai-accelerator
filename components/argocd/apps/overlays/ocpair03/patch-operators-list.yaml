@@ -30,9 +30,9 @@ spec:
         values:
           name: authorino-operator
           path: components/operators/authorino-operator/operator/overlays/managed-services
-      # OpenShift AI - Fast 3.x channel
+      # OpenShift AI - Stable 3.x channel (fast-3.x ended at 3.3.1)
       - cluster: local
         url: https://kubernetes.default.svc
         values:
           name: openshift-ai-operator
-          path: components/operators/openshift-ai/aggregate/overlays/fast-3.x
+          path: components/operators/openshift-ai/aggregate/overlays/stable-3.x

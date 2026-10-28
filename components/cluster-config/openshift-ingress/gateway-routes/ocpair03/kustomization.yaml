@@ -5,3 +5,4 @@ namespace: openshift-ingress
 
 resources:
   - rhoai-data-science-gateway-route.yaml
+  - rhoai-rh-ai-gateway-route.yaml

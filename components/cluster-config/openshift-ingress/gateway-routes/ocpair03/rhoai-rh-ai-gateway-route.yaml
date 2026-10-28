@@ -1,0 +1,22 @@
+# OpenShift AI 3.4+ serves the dashboard on rh-ai.<apps domain> (the data-science-gateway
+# hostname stays as a legacy listener). The gateway Service is a LoadBalancer without an
+# address on this cluster, so the router passes the new hostname through to it, as for
+# the legacy one.
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: rh-ai
+  labels:
+    app: data-science-gateway
+    platform.opendatahub.io/part-of: gatewayconfig
+spec:
+  host: rh-ai.apps.ocpair03.anillocal.com
+  port:
+    targetPort: 443
+  tls:
+    termination: passthrough
+  to:
+    kind: Service
+    name: data-science-gateway-data-science-gateway-class
+    weight: 100
+  wildcardPolicy: None

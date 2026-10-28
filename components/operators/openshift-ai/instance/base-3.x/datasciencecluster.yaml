@@ -14,8 +14,10 @@ spec:
      managementState: Managed
    kserve:
      managementState: Managed
+   # Removed: OpenShift AI 3.5 installs OGX (its replacement) only when this is Removed.
+   # OGX itself is set on the cluster, not in Git.
    llamastackoperator:
-     managementState: Managed
+     managementState: Removed
    kueue:
      managementState: Removed
    modelregistry:

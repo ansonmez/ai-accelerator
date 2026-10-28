@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# ocpair03: manual approval, and startingCSV = the installed v3.2.0. The Subscription had
+# lost its installedCSV status and asked for v3.1.0 while v3.2.0 was installed, so OLM
+# failed to resolve every Subscription in openshift-operators (ResolutionFailed).
+resources:
+  - ../stable-3.x
+
+patches:
+  - target:
+      kind: Subscription
+      name: servicemeshoperator3
+    path: patch-subscription.yaml
